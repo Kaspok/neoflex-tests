@@ -10,7 +10,7 @@ import static io.qameta.allure.Allure.step;
 
 public class HomePageTests extends TestBase {
 
-    private GeneralsBlocks generalsBlocks = new GeneralsBlocks();
+    private final GeneralsBlocks generalsBlocks = new GeneralsBlocks();
 
     @Test
     void homePageShouldContains9Widgets() {
@@ -26,6 +26,14 @@ public class HomePageTests extends TestBase {
     @Test
     void checkFooterContacts() {
         open("");
-        generalsBlocks.checkFooterContacts();
+        generalsBlocks
+                .checkFooterContacts()
+                .buttonContactUsClickAndCheck();
+    }
+
+    @Test
+    void checkPopUpListOfSolutionsButton() {
+        open("");
+        generalsBlocks.popUpListOfSolutionsButton();
     }
 }
