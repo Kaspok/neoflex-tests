@@ -5,6 +5,8 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.By;
+import ru.neoflex.data.AboutCompanyItem;
+import ru.neoflex.data.ExpertiseItem;
 import ru.neoflex.data.MenuItem;
 import ru.neoflex.data.SolutionsItem;
 
@@ -98,7 +100,7 @@ public class GeneralsBlocks {
     }
 
     @Step("Проверяем содержимое всплывающего окна у пункта 'Решения'")
-    public GeneralsBlocks popUpListOfSolutionsButton() {
+    public GeneralsBlocks solutionsButtonPopUpList() {
         SelenideElement solutionPopUp = $(".navbar__sub");
         SelenideLogger.addListener("allure", new AllureSelenide());
         solutionsWidget.hover();
@@ -117,6 +119,39 @@ public class GeneralsBlocks {
         solutionPopUp.shouldHave(text(SolutionsItem.SERVICING_AND_LENDING.getDisplayName()));
         solutionPopUp.shouldHave(text(SolutionsItem.SECURITY_OPERATIONS_CENTER.getDisplayName()));
         solutionPopUp.shouldHave(text(SolutionsItem.NEOFLEX_LOAN_BUREAU_VAS.getDisplayName()));
+        return this;
+    }
+
+    @Step("Проверяем содержимое всплывающего окна у пункта 'Экспертиза'")
+    public GeneralsBlocks expertiseButtonPopUpList() {
+        SelenideElement expertisePopUp = $(".navbar__sub", 1);
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        expertiseWidget.hover();
+        expertisePopUp.shouldHave(text(ExpertiseItem.FAST_DATA.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.MICROSERVICES.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.DEVOPS.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.DATA_SCIENCE.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.MLOPS.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.BIG_DATA.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.UX_UI.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.SUITECRM.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.SITE_RELIABILITY_ENGINEERING.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.CLOUD_SERVICES.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.NEOFLEX_MSA_PLATFORM.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.NEOFLEX_DATAGRAM.getDisplayName()));
+        return this;
+    }
+
+    @Step("Проверяем содержимое всплывающего окна у пункта 'О компании'")
+    public GeneralsBlocks aboutCompanyButtonPopUpList() {
+        SelenideElement aboutCompanyPopUp = $(".navbar__sub", 2);
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        aboutCompanyWidget.hover();
+        aboutCompanyPopUp.shouldHave(text(AboutCompanyItem.ABOUT_COMPANY_ITEM.getDisplayName()));
+        aboutCompanyPopUp.shouldHave(text(AboutCompanyItem.MANAGEMENT.getDisplayName()));
+        aboutCompanyPopUp.shouldHave(text(AboutCompanyItem.HISTORY.getDisplayName()));
+        aboutCompanyPopUp.shouldHave(text(AboutCompanyItem.PARTNERS.getDisplayName()));
+        aboutCompanyPopUp.shouldHave(text(AboutCompanyItem.CLIENTS.getDisplayName()));
         return this;
     }
 }

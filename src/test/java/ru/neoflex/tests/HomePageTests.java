@@ -34,6 +34,9 @@ public class HomePageTests extends TestBase {
     @Test
     void checkPopUpListOfSolutionsButton() {
         open("");
-        generalsBlocks.popUpListOfSolutionsButton();
+        generalsBlocks
+                .solutionsButtonPopUpList()
+                .expertiseButtonPopUpList()
+                .aboutCompanyButtonPopUpList();
     }
 }
