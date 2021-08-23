@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import ru.neoflex.data.MenuItem;
 import ru.neoflex.helpers.TopBar;
 import ru.neoflex.pages.GeneralsBlocks;
+import ru.neoflex.tests.base.TestBaseUi;
 
 import static com.codeborne.selenide.Condition.exactTextCaseSensitive;
 import static com.codeborne.selenide.Selenide.$;
@@ -12,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("UI тесты")
-public class PageTests extends TestBase {
+public class PageTests extends TestBaseUi {
 
     private final GeneralsBlocks generalsBlocks = new GeneralsBlocks();
     private final TopBar topBar = new TopBar();
@@ -88,7 +89,7 @@ public class PageTests extends TestBase {
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     @DisplayName("Переход в пункт 'О компании'. Проверка заголовка страницы")
     void checkTitleOfTheAboutCompanyItem() {
         open("");

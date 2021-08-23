@@ -31,8 +31,8 @@ dependencies {
             "org.assertj:assertj-core:3.20.2",
             "io.rest-assured:rest-assured:4.4.0",
             "org.json:json:20210307",
-            "com.fasterxml.jackson.core:jackson-annotations:2.12.4",
-            "com.github.javafaker:javafaker:1.0.2")
+            "com.github.javafaker:javafaker:1.0.2",
+            "com.fasterxml.jackson.core:jackson-databind:2.10.0")
 
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
