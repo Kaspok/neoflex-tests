@@ -12,7 +12,8 @@ public enum ExpertiseItem {
     SITE_RELIABILITY_ENGINEERING("Site Reliability Engineering"),
     CLOUD_SERVICES("Cloud Services"),
     NEOFLEX_MSA_PLATFORM("Cloud Services"),
-    NEOFLEX_DATAGRAM("Neoflex MSA Platform");
+    NEOFLEX_DATAGRAM("Neoflex MSA Platform"),
+    CUSTOM_SOFTWARE_DEVELOPMENT("Заказная разработка ПО");
 
     private String displayName;
 

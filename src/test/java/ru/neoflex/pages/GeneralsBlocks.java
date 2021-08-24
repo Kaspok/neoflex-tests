@@ -145,6 +145,7 @@ public class GeneralsBlocks {
         expertisePopUp.shouldHave(text(ExpertiseItem.CLOUD_SERVICES.getDisplayName()));
         expertisePopUp.shouldHave(text(ExpertiseItem.NEOFLEX_MSA_PLATFORM.getDisplayName()));
         expertisePopUp.shouldHave(text(ExpertiseItem.NEOFLEX_DATAGRAM.getDisplayName()));
+        expertisePopUp.shouldHave(text(ExpertiseItem.CUSTOM_SOFTWARE_DEVELOPMENT.getDisplayName()));
         return this;
     }
 
