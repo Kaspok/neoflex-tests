@@ -1,45 +1,48 @@
 package ru.neoflex.tests;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.neoflex.helpers.ReadTxtFiles;
 import ru.neoflex.tests.base.TestBaseApi;
 
-import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("API тесты")
 public class ApiTests extends TestBaseApi {
 
     private ReadTxtFiles readTxtFile = new ReadTxtFiles();
+    private TestBaseApi testBaseApi = new TestBaseApi();
+
 
     @Test
+    @Order(1)
+    @DisplayName("Проверка информации о проектах во вкладке `Проекты`")
     void getProjectsItemTest() {
-        step("Проверка информации о проектах во вкладке `Проекты`", () -> {
-            String s = TestBaseApi.requestTypeText
-                    .when()
-                    .body("offset=1&count=10&lang=ru")
-                    .get("/main/projects")
-                    .then()
-                    .statusCode(200)
-                    .extract().response().body().asString();
-            assertThat(s).contains(readTxtFile.read("ProjectsItemRawJson.txt"));
-        });
+        String s = testBaseApi.requestTypeText
+                .when()
+                .body("offset=1&count=10&lang=ru")
+                .get("/main/projects")
+                .then()
+                .statusCode(200)
+                .extract().response().body().asString();
+
+        assertThat(s).contains(readTxtFile.read("ProjectsItemRawJson.txt"));
     }
 
     @Test
+    @Order(2)
+    @DisplayName("Проверка информации об экспертизе во вкладке `Экспертиза`")
     void getExpertiseItemTest() {
-        step("Проверка информации о проектах во вкладке `Экспертиза`", () -> {
-            String s = TestBaseApi.requestTypeText
-                    .when()
-                    .queryParam("offset", "1")
-                    .queryParam("count", "14")
-                    .queryParam("lang", "ru")
-                    .get("/expertises")
-                    .then()
-                    .statusCode(200)
-                    .extract().response().body().asString();
-            assertThat(s).contains(readTxtFile.read("ExpertiseItemRawJson.txt"));
-        });
+        String s = testBaseApi.requestTypeText
+                .when()
+                .queryParam("offset", "1")
+                .queryParam("count", "14")
+                .queryParam("lang", "ru")
+                .get("/expertises")
+                .then()
+                .statusCode(200)
+                .extract().response().body().asString();
+
+        assertThat(s).contains(readTxtFile.read("ExpertiseItemRawJson.txt"));
     }
 }
