@@ -12,6 +12,7 @@ import ru.neoflex.data.SolutionsItem;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class GeneralsBlocks {
 
@@ -34,6 +35,11 @@ public class GeneralsBlocks {
     private final SelenideElement centerFooterContacts = allFooterContacts.$(".footer__center");
     private final SelenideElement rightFooterContacts = allFooterContacts.$(".footer__ppd");
 
+    @Step("Открываем страницу - {page}")
+    public GeneralsBlocks openPage(String page) {
+        open(page);
+        return this;
+    }
 
     @Step("Проверяем, что все виджеты на верхней панели отображаются")
     public GeneralsBlocks checkThatWidgetsDisplayed() {

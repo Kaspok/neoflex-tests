@@ -26,13 +26,19 @@ allure {
 dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
+
             "io.qameta.allure:allure-selenide:$allureVersion",
+
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             "org.assertj:assertj-core:3.20.2",
+
             "io.rest-assured:rest-assured:4.4.0",
             "org.json:json:20210307",
-            "com.github.javafaker:javafaker:1.0.2",
-            "com.fasterxml.jackson.core:jackson-databind:2.10.0")
+            "com.fasterxml.jackson.core:jackson-databind:2.12.4",
+
+            "org.aeonbits.owner:owner:1.0.12",
+
+            "com.github.javafaker:javafaker:1.0.2")
 
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion",

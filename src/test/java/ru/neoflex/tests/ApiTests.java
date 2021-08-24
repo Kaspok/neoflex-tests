@@ -23,7 +23,7 @@ public class ApiTests extends TestBaseApi {
                     .then()
                     .statusCode(200)
                     .extract().response().body().asString();
-            assertThat(s).contains(readTxtFile.read("src/test/resources/ProjectsItemRawJson.txt"));
+            assertThat(s).contains(readTxtFile.read("ProjectsItemRawJson.txt"));
         });
     }
 
@@ -39,7 +39,7 @@ public class ApiTests extends TestBaseApi {
                     .then()
                     .statusCode(200)
                     .extract().response().body().asString();
-            assertThat(s).contains(readTxtFile.read("src/test/resources/ExpertiseItemRawJson.txt"));
+            assertThat(s).contains(readTxtFile.read("ExpertiseItemRawJson.txt"));
         });
     }
 }

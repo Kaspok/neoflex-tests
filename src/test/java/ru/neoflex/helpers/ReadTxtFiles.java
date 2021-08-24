@@ -6,9 +6,11 @@ import java.nio.file.Paths;
 
 public class ReadTxtFiles {
 
-    public String read(String path) {
+    public String read(String nameFile) {
         try {
-            return Files.lines(Paths.get(path)).reduce("", String::concat);
+            return Files
+                    .lines(Paths.get("src/test/resources/referenceResponses(API)/" + nameFile))
+                    .reduce("", String::concat);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

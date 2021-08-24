@@ -23,12 +23,13 @@ public class PageTests extends TestBaseUi {
     @DisplayName("Проверка заголовка начальной страницы, проверка наличия панели навигации")
     void homePageShouldContains9Widgets() {
         final String homeGreeting = "Помогаем бизнесу получать устойчивые конкурентные преимущества в цифровую эпоху";
-        open("");
+        generalsBlocks
+                .openPage("")
+                .checkThatWidgetsDisplayed();
         step("Проверяем, что верхнее описание содержит текст: Помогаем бизнесу получать устойчивые " +
                 "конкурентные преимущества в цифровую эпоху", () -> {
             $(".home-greeting").$(".home-greeting__title").shouldHave(exactTextCaseSensitive(homeGreeting));
         });
-        generalsBlocks.checkThatWidgetsDisplayed();
     }
 
     @Test
