@@ -1,6 +1,7 @@
 package ru.neoflex.tests;
 
 import org.junit.jupiter.api.*;
+import ru.neoflex.config.App;
 import ru.neoflex.data.MenuItem;
 import ru.neoflex.helpers.TopBar;
 import ru.neoflex.pages.GeneralsBlocks;
@@ -8,7 +9,6 @@ import ru.neoflex.tests.base.TestBaseUi;
 
 import static com.codeborne.selenide.Condition.exactTextCaseSensitive;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -24,7 +24,7 @@ public class PageTests extends TestBaseUi {
     void homePageShouldContains9Widgets() {
         final String homeGreeting = "Помогаем бизнесу получать устойчивые конкурентные преимущества в цифровую эпоху";
         generalsBlocks
-                .openPage("")
+                .openPage(App.appConfig.webUrl())
                 .checkThatWidgetsDisplayed();
         step("Проверяем, что верхнее описание содержит текст: Помогаем бизнесу получать устойчивые " +
                 "конкурентные преимущества в цифровую эпоху", () -> {
@@ -36,8 +36,8 @@ public class PageTests extends TestBaseUi {
     @Order(2)
     @DisplayName("Проверка контактов в конце страницы, проверка формы 'Связаться с нами'")
     void checkFooterContacts() {
-        open("");
         generalsBlocks
+                .openPage(App.appConfig.webUrl())
                 .checkFooterContacts()
                 .buttonContactUsClickAndCheck();
     }
@@ -46,8 +46,8 @@ public class PageTests extends TestBaseUi {
     @Order(3)
     @DisplayName("Проверка всплывающих окон у пунктов 'Решения','Экспертиза''О компании'")
     void checkPopUpListOfSolutionsButton() {
-        open("");
         generalsBlocks
+                .openPage(App.appConfig.webUrl())
                 .solutionsButtonPopUpList()
                 .expertiseButtonPopUpList()
                 .aboutCompanyButtonPopUpList();
@@ -57,7 +57,7 @@ public class PageTests extends TestBaseUi {
     @Order(4)
     @DisplayName("Переход в пункт 'Решения'. Проверка заголовка страницы")
     void checkTitleOfTheSolutionItem() {
-        open("");
+        generalsBlocks.openPage(App.appConfig.webUrl());
         topBar.navigateTo(MenuItem.SOLUTIONS);
         step("Проверяем, что заголовок страницы имеет наименование 'Решения'", () -> {
             $(".base-typography_headline")
@@ -69,7 +69,7 @@ public class PageTests extends TestBaseUi {
     @Order(5)
     @DisplayName("Переход в пункт 'Проекты'. Проверка заголовка страницы")
     void checkTitleOfTheProjectsItem() {
-        open("");
+        generalsBlocks.openPage(App.appConfig.webUrl());
         topBar.navigateTo(MenuItem.PROJECTS);
         step("Проверяем, что заголовок страницы имеет наименование 'Проекты'", () -> {
             $(".base-typography_headline")
@@ -81,7 +81,7 @@ public class PageTests extends TestBaseUi {
     @Order(6)
     @DisplayName("Переход в пункт 'Экспертиза'. Проверка заголовка страницы")
     void checkTitleOfTheExpertiseItem() {
-        open("");
+        generalsBlocks.openPage(App.appConfig.webUrl());
         topBar.navigateTo(MenuItem.EXPERTISE);
         step("Проверяем, что заголовок страницы имеет наименование 'Экспертиза'", () -> {
             $(".base-typography_headline")
@@ -93,7 +93,7 @@ public class PageTests extends TestBaseUi {
     @Order(7)
     @DisplayName("Переход в пункт 'О компании'. Проверка заголовка страницы")
     void checkTitleOfTheAboutCompanyItem() {
-        open("");
+        generalsBlocks.openPage(App.appConfig.webUrl());
         topBar.navigateTo(MenuItem.ABOUT_COMPANY);
         step("Проверяем, что заголовок страницы имеет наименование 'Экспертиза'", () -> {
             $(".base-typography_headline")

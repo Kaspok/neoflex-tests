@@ -1,13 +1,15 @@
 package ru.neoflex.tests.base;
 
-import com.codeborne.selenide.Configuration;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
+import ru.neoflex.config.App;
+import ru.neoflex.helpers.DriverSettings;
 
 public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        Configuration.baseUrl = "https://www.neoflex.ru/";
-        Configuration.startMaximized = true;
+        DriverSettings.configure();
+        RestAssured.baseURI = App.appConfig.apiUrl();
     }
 }
